@@ -1,0 +1,48 @@
+.filters-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+.typePizza {
+    background-color: #f9f9f9;
+    border-radius: 30px;
+    height: 46px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    border: none;
+    margin-right: 10px;
+    padding: 0 30px;
+    color: #2c2c2c;
+    &:hover {
+        background-color: aqua;
+        cursor: pointer;
+    }
+}
+.active {
+    background-color: #282828;
+    color: white;
+}
+.filter-rating {
+    margin: auto 0;
+    position: relative;
+    &__nameFilter {
+        color: #fe5f1e;
+        margin-left: 8px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+h2 {
+    margin: 0;
+    padding: 0;
+}
+.all-pizzas {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    color: #000000;
+    margin-bottom: 35px;
+}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 
-import { IRatingFilter } from "../types/mainTypes";
+import { IRatingFilter } from "../../types/mainTypes";
 
 import style from "./ModalFilter.module.scss";
 // changeState: (num: boolean) => void;

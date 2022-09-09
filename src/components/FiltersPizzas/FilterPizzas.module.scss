@@ -46,3 +46,9 @@ h2 {
     color: #000000;
     margin-bottom: 35px;
 }
+.pizzas-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 35px;
+    row-gap: 65px;
+}

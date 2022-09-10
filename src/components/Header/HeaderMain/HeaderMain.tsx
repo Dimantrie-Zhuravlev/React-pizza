@@ -33,8 +33,8 @@ const HeaderMain = () => {
             <div className={classes["to-basket__splash"]}>1</div>
             <span>
               {useSelector(
-                (state: StatePizzas) => state.SomePizzas.valuePizzas
-              )}{" "}
+                (state: StatePizzas) => state.SomePizzas.pizzas.length
+              )}
               <ShoppingCartOutlined />
             </span>
           </div>

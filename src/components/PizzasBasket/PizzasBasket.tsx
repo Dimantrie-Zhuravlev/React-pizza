@@ -18,7 +18,7 @@ const PizzasBasket = () => {
   const items = useSelector((state: StatePizzas) => state.SomePizzas.pizzas);
   const totalPrice = useSelector((state: StatePizzas) => state.SomePizzas.summ);
   const totalPizzas = useSelector(
-    (state: StatePizzas) => state.SomePizzas.valuePizzas
+    (state: StatePizzas) => state.SomePizzas.pizzas.length
   );
   return (
     <div className={"PizzasBasket-container"}>
@@ -34,7 +34,6 @@ const PizzasBasket = () => {
             <DeleteOutlined /> очистить корзину
           </span>
         </div>
-        {/* <SeparatorLine color="#F4F4F4" /> */}
         <div className={"PizzasBasket-items"}>
           {items.map((elem) => (
             <React.Fragment key={elem.id}>

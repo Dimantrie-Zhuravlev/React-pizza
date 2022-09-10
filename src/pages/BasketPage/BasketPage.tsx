@@ -8,7 +8,7 @@ import PizzasBasket from "../../components/PizzasBasket";
 
 const BasketPage = () => {
   const isPizzas = useSelector(
-    (state: StatePizzas) => state.SomePizzas.basketPizzasId.length
+    (state: StatePizzas) => state.SomePizzas.pizzas.length
   );
   return (
     <>

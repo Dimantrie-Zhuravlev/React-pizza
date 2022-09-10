@@ -6,9 +6,8 @@ import { IBasketPizza } from "../../types/StateRedux";
 import {
   addEditPizzaBasket,
   subtractEditPizzaBasket,
-  substractOnePizza,
   addSumm,
-  addOnePizza,
+  deleteOneTypePizza,
 } from "../../store/slices/BasketInfo";
 
 import style from "./PizzaBasket.module.scss";
@@ -40,7 +39,6 @@ const PizzaBasket = (props: { pizza: IBasketPizza }) => {
             onClick={() => {
               dispatch(addEditPizzaBasket(id));
               dispatch(addSumm(price));
-              dispatch(addOnePizza());
               changeCurrentValue(currentValue + 1);
             }}
             className={style["pizza-edit-value"]}
@@ -54,8 +52,10 @@ const PizzaBasket = (props: { pizza: IBasketPizza }) => {
             onClick={() => {
               dispatch(subtractEditPizzaBasket(id));
               dispatch(addSumm(-price));
-              dispatch(substractOnePizza());
               changeCurrentValue(currentValue - 1);
+              if (currentValue === 1) {
+                dispatch(deleteOneTypePizza(id));
+              }
             }}
             className={style["pizza-edit-value"]}
           >
@@ -63,7 +63,13 @@ const PizzaBasket = (props: { pizza: IBasketPizza }) => {
           </button>
         </div>
         <span className={style["pizza-name"]}>{price * value} &#8381;</span>
-        <button className={style["pizza-delete"]}>
+        <button
+          onClick={() => {
+            dispatch(deleteOneTypePizza(id));
+            dispatch(addSumm(-price * value));
+          }}
+          className={style["pizza-delete"]}
+        >
           <CloseOutlined />
         </button>
       </div>

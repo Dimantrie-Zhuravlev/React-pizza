@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { IRatingFilter } from "../../types/mainTypes";
 
 import style from "./ModalFilter.module.scss";
-// changeState: (num: boolean) => void;
+
 const ModalFilter = (props: {
   ratingFilter: IRatingFilter[];
   changeState: (filter: IRatingFilter) => void;

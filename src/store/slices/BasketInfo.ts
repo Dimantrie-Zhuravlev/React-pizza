@@ -4,7 +4,6 @@ import { IListPizzas } from "../../types/StateRedux";
 
 const initialState = {
   summ: 0,
-  valuePizzas: 0,
   basketPizzasId: [],
   pizzas: [],
 } as IListPizzas;
@@ -16,12 +15,6 @@ export const BasketInfo = createSlice({
     addSumm(state, action) {
       state.summ += action.payload;
     },
-    addOnePizza(state) {
-      state.valuePizzas += 1;
-    },
-    substractOnePizza(state) {
-      state.valuePizzas -= 1;
-    },
     addNewIdPizzaId(state, action) {
       if (!state.basketPizzasId.includes(action.payload))
         state.basketPizzasId.push(action.payload);
@@ -30,7 +23,6 @@ export const BasketInfo = createSlice({
       state.basketPizzasId = [];
       state.pizzas = [];
       state.summ = 0;
-      state.valuePizzas = 0;
     },
     addNewPizzaBasket(state, action) {
       state.pizzas.push(action.payload);
@@ -49,17 +41,20 @@ export const BasketInfo = createSlice({
           : elem
       );
     },
+    deleteOneTypePizza(state, action) {
+      console.log(action);
+      state.pizzas = state.pizzas.filter((elem) => elem.id !== action.payload);
+    },
   },
 });
 
 export const {
   addSumm,
-  addOnePizza,
-  substractOnePizza,
   addNewIdPizzaId,
   deleteBasket,
   addNewPizzaBasket,
   addEditPizzaBasket,
   subtractEditPizzaBasket,
+  deleteOneTypePizza,
 } = BasketInfo.actions;
 export default BasketInfo.reducer;

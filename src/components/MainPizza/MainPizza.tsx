@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { IMainPizza } from "../../types/pizzas";
 import {
   addSumm,
-  addOnePizza,
+  // addOnePizza,
   addNewIdPizzaId,
   addNewPizzaBasket,
   addEditPizzaBasket,
@@ -116,7 +116,7 @@ const MainPizza = (props: { pizza: IMainPizza }) => {
             const newId = `${props.pizza.id} ${dough} ${size}`;
             setTotalPizzas(totalpizzas + 1);
             dispatch(addSumm(currentPrice));
-            dispatch(addOnePizza());
+            // dispatch(addOnePizza());
             if (!pizzasId.includes(newId))
               dispatch(
                 addNewPizzaBasket({

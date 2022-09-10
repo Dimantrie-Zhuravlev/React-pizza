@@ -6,7 +6,6 @@ import { IMeatFilter, IRatingFilter } from "../../types/mainTypes";
 import { IMainPizza } from "../../types/pizzas";
 import MainPizza from "../MainPizza";
 import ModalFilter from "../ModalFilter";
-// import { StatePizzas } from "../../types/StateRedux";
 import { fetchPizzas } from "../../services/Pizzas/kek";
 
 import styles from "./FilterPizzas.module.scss";

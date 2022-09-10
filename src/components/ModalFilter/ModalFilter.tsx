@@ -9,6 +9,7 @@ const ModalFilter = (props: {
   ratingFilter: IRatingFilter[];
   changeState: (filter: IRatingFilter) => void;
   currentFilter: IRatingFilter;
+  changeVisibility: (visib: boolean) => void;
 }) => {
   const [currentFilter, changecurrentFilter] = useState(props.currentFilter);
   return (
@@ -20,6 +21,7 @@ const ModalFilter = (props: {
           onClick={() => {
             changecurrentFilter(res);
             props.changeState(res);
+            props.changeVisibility(false);
           }}
         >
           {res}

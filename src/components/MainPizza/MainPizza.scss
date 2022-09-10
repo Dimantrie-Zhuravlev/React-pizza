@@ -7,7 +7,8 @@ img {
     margin: 0 2px;
 }
 .pizza-image {
-    margin-bottom: 10px;
+    width: 90%;
+    margin: 0 auto 10px auto;
 }
 .pizza-name {
     display: inline-block;
@@ -33,20 +34,31 @@ img {
         text-align: center;
         color: #2c2c2c;
         border-radius: 5px;
+        border: 0.5px solid transparent;
+        &:hover {
+            cursor: pointer;
+            border: 0.5px solid black;
+        }
     }
+    .active-style-state {
+        background-color: white;
+    }
+
     &__dough {
         display: grid;
         grid-template-columns: 1fr 1fr;
         column-gap: 6px;
         margin-bottom: 10px;
-        .dough-active {
-            background-color: white;
-        }
     }
     &__size {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         column-gap: 4px;
+    }
+    .disabled-style {
+        background-color: transparent;
+        pointer-events: none;
+        color: red;
     }
 }
 .pizza-price-container {
@@ -62,13 +74,39 @@ img {
         color: #000000;
     }
     button {
-        color: white;
+        display: flex;
+        color: #fe5f1e;
         font-weight: 700;
+        height: 40px;
+        box-sizing: border-box;
         font-size: 16px;
         line-height: 19px;
-        background: #fe5f1e;
+        background: transparent;
         border: 1px solid #fe5f1e;
         border-radius: 30px;
         padding: 11px 25px;
+        &:hover {
+            background: #fe5f1e;
+            color: white;
+            cursor: pointer;
+        }
     }
+}
+.cur-pizzas-mini {
+    padding: 2px 5px;
+    background: #eb5a1e;
+    color: white;
+    border-radius: 50%;
+    margin-left: 4px;
+    font-size: 13px;
+    line-height: 16px;
+}
+.cur-pizzas {
+    background: #eb5a1e;
+    color: white;
+    border-radius: 50%;
+    margin-left: 4px;
+    font-size: 13px;
+    line-height: 16px;
+    padding: 2px 3px;
 }

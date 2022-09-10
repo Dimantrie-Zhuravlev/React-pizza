@@ -43,6 +43,7 @@ const FilterPizzas = () => {
         ratingFilter={ratingFilters}
         changeState={setratingFilter}
         currentFilter={ratingFilter}
+        changeVisibility={setchange}
       />
     </div>
   ) : null;

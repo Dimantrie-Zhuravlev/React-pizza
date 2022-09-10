@@ -1,10 +1,8 @@
 import React from "react";
 
-const SeparatorLine = () => {
+const SeparatorLine: React.FC<{ color?: string }> = ({ color = "black" }) => {
   return (
-    <div
-      style={{ width: "100%", backgroundColor: "#F7F7F7", height: "1px" }}
-    ></div>
+    <div style={{ width: "100%", backgroundColor: color, height: "1px" }}></div>
   );
 };
 

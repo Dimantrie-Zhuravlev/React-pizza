@@ -1,12 +1,10 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
 
-import logo from "../../icons/header-icon.svg";
-import SeparatorLine from "../SeparatorLine";
+import logo from "../../../icons/header-icon.svg";
+import SeparatorLine from "../../SeparatorLine";
+import classes from "../Header.module.scss";
 
-import classes from "./Header.module.scss";
-
-const Header = () => {
+const HeaderMain = () => {
   return (
     <>
       <div className={classes["header-container"]}>
@@ -22,15 +20,10 @@ const Header = () => {
             </span>
           </div>
         </div>
-        <button className={classes["header-container__to-basket"]}>
-          1112141241241
-        </button>
       </div>
-      <SeparatorLine />
-
-      <Outlet />
+      <SeparatorLine color="#F7F7F7" />
     </>
   );
 };
 
-export default Header;
+export default HeaderMain;

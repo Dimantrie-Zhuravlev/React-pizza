@@ -3,10 +3,24 @@
     justify-content: space-between;
     margin-bottom: 35px;
     &__to-basket {
-        height: 50px;
-        background-color: orange;
+        background-color: #fe5f1e;
         border: none;
         border-radius: 30px;
+        padding: 12px 20px;
+        border-radius: 30px;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+        display: flex;
+        justify-content: space-between;
+        color: white;
+        &:hover {
+            cursor: pointer;
+        }
+        span {
+            display: inline-block;
+            margin: auto 0;
+        }
     }
     &__name {
         display: flex;
@@ -27,4 +41,11 @@
     font-size: 16px;
     line-height: 19px;
     color: #7b7b7b;
+}
+.to-basket__splash {
+    width: 1px;
+    height: 100%;
+    margin: 0 10px;
+    color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0.25);
 }

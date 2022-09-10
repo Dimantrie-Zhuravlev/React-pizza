@@ -1,0 +1,53 @@
+.PizzasBasket-container {
+    padding: 100px 0;
+    .basket-flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        &__name {
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 39px;
+            color: #000000;
+        }
+        &__basket {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            color: #b6b6b6;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        &__bottom {
+            button {
+                width: 210px;
+                height: 55px;
+                border-radius: 30px;
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 19px;
+            }
+            &-pay {
+                background-color: #fe5f1e;
+                color: white;
+                border: none;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+            &-return {
+                background-color: transparent;
+                color: #d3d3d3;
+                border: 1px solid #d3d3d3;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .basket-price {
+        margin-bottom: 40px;
+    }
+}

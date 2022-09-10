@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 import className from "classnames";
+import { useDispatch } from "react-redux";
 
 import { IMainPizza } from "../../types/pizzas";
+import {
+  addSumm,
+  addOnePizza,
+  addNewIdPizza,
+  addBasketPizza,
+} from "../../store/slices/BasketInfo";
 
 import "./MainPizza.scss";
 
 const MainPizza = (props: { pizza: IMainPizza }) => {
+  const { imageUrl, title: name } = props.pizza;
+  const dispatch = useDispatch();
   const startDough = props.pizza.types[0] === 0 ? "тонкое" : "традиционное";
   const startSize =
     props.pizza.sizes[0] === 26 ? 26 : props.pizza.sizes[0] === 30 ? 30 : 40;
@@ -34,9 +43,9 @@ const MainPizza = (props: { pizza: IMainPizza }) => {
   return (
     <div className={"pizza-container"}>
       <div className={"pizza-image"}>
-        <img src={props.pizza.imageUrl} />
+        <img src={imageUrl} />
       </div>
-      <span className={"pizza-name"}>{props.pizza.title}</span>
+      <span className={"pizza-name"}>{name}</span>
       <div className={"pizza-character"}>
         <div className={"pizza-character__dough"}>
           <span
@@ -91,10 +100,15 @@ const MainPizza = (props: { pizza: IMainPizza }) => {
         </div>
       </div>
       <div className={"pizza-price-container"}>
-        <span className={"pizza-price"}>{currentPrice} руб</span>
+        <span className={"pizza-price"}>{currentPrice} &#8381;</span>
         <button
           onClick={() => {
+            const newId = `${props.pizza.id} ${dough} ${size}`;
             setTotalPizzas(totalpizzas + 1);
+            dispatch(addSumm(currentPrice));
+            dispatch(addOnePizza());
+            dispatch(addNewIdPizza(newId));
+            dispatch(addBasketPizza({ imageUrl, name, dough, size }));
           }}
         >
           + добавить {currentPizzas}

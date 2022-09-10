@@ -1,6 +1,6 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
-import SomePizzas from "./slices/SomePizzas";
+import SomePizzas from "./slices/BasketInfo";
 
 const rootReducer = combineReducers({
   SomePizzas,

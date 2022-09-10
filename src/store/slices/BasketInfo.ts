@@ -5,8 +5,8 @@ import { IListPizzas } from "../../types/StateRedux";
 const initialState = {
   summ: 0,
   valuePizzas: 0,
-  basketPizzas: [],
   basketPizzasId: [],
+  pizzas: [],
 } as IListPizzas;
 
 export const BasketInfo = createSlice({
@@ -19,16 +19,47 @@ export const BasketInfo = createSlice({
     addOnePizza(state) {
       state.valuePizzas += 1;
     },
-    addNewIdPizza(state, action) {
+    substractOnePizza(state) {
+      state.valuePizzas -= 1;
+    },
+    addNewIdPizzaId(state, action) {
       if (!state.basketPizzasId.includes(action.payload))
         state.basketPizzasId.push(action.payload);
     },
-    addBasketPizza(state, action) {
-      console.log(action);
+    deleteBasket(state) {
+      state.basketPizzasId = [];
+      state.pizzas = [];
+      state.summ = 0;
+      state.valuePizzas = 0;
+    },
+    addNewPizzaBasket(state, action) {
+      state.pizzas.push(action.payload);
+    },
+    addEditPizzaBasket(state, action) {
+      state.pizzas = state.pizzas.map((elem) =>
+        elem.id === action.payload
+          ? Object.assign(elem, { value: elem.value + 1 })
+          : elem
+      );
+    },
+    subtractEditPizzaBasket(state, action) {
+      state.pizzas = state.pizzas.map((elem) =>
+        elem.id === action.payload
+          ? Object.assign(elem, { value: elem.value - 1 })
+          : elem
+      );
     },
   },
 });
 
-export const { addSumm, addOnePizza, addNewIdPizza, addBasketPizza } =
-  BasketInfo.actions;
+export const {
+  addSumm,
+  addOnePizza,
+  substractOnePizza,
+  addNewIdPizzaId,
+  deleteBasket,
+  addNewPizzaBasket,
+  addEditPizzaBasket,
+  subtractEditPizzaBasket,
+} = BasketInfo.actions;
 export default BasketInfo.reducer;

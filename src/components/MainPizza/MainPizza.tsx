@@ -1,18 +1,28 @@
 import React, { useState } from "react";
 import className from "classnames";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { IMainPizza } from "../../types/pizzas";
 import {
   addSumm,
   addOnePizza,
-  addNewIdPizza,
-  addBasketPizza,
+  addNewIdPizzaId,
+  addNewPizzaBasket,
+  addEditPizzaBasket,
 } from "../../store/slices/BasketInfo";
+import { StatePizzas } from "../../types/StateRedux";
 
 import "./MainPizza.scss";
 
 const MainPizza = (props: { pizza: IMainPizza }) => {
+  const pizzasId = useSelector(
+    (state: StatePizzas) => state.SomePizzas.basketPizzasId
+  );
+  const valuePizzas = useSelector((state: StatePizzas) =>
+    state.SomePizzas.pizzas
+      .filter((elem) => +elem.id[0] === props.pizza.id)
+      .reduce((prev, curr) => prev + curr.value, 0)
+  );
   const { imageUrl, title: name } = props.pizza;
   const dispatch = useDispatch();
   const startDough = props.pizza.types[0] === 0 ? "тонкое" : "традиционное";
@@ -20,7 +30,7 @@ const MainPizza = (props: { pizza: IMainPizza }) => {
     props.pizza.sizes[0] === 26 ? 26 : props.pizza.sizes[0] === 30 ? 30 : 40;
   const [dough, setDough] = useState<"традиционное" | "тонкое">(startDough);
   const [size, setSize] = useState<26 | 30 | 40>(startSize);
-  const [totalpizzas, setTotalPizzas] = useState(0);
+  const [totalpizzas, setTotalPizzas] = useState(valuePizzas);
   const currentPrice =
     size === 26
       ? props.pizza.price[0]
@@ -107,8 +117,20 @@ const MainPizza = (props: { pizza: IMainPizza }) => {
             setTotalPizzas(totalpizzas + 1);
             dispatch(addSumm(currentPrice));
             dispatch(addOnePizza());
-            dispatch(addNewIdPizza(newId));
-            dispatch(addBasketPizza({ imageUrl, name, dough, size }));
+            if (!pizzasId.includes(newId))
+              dispatch(
+                addNewPizzaBasket({
+                  id: newId,
+                  imageUrl,
+                  name,
+                  value: 1,
+                  price: currentPrice,
+                })
+              );
+            else {
+              dispatch(addEditPizzaBasket(newId));
+            }
+            dispatch(addNewIdPizzaId(newId));
           }}
         >
           + добавить {currentPizzas}

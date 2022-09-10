@@ -1,19 +1,19 @@
 // import { IMainPizza } from "./pizzas";
 
 export interface IBasketPizza {
+  id: string;
   imageUrl: string;
   name: string;
-  dough: string;
-  size: number;
-  value?: number;
-  totalPrice?: number;
+  // dough: string;
+  // size: number;
+  value: number;
+  price: number;
 }
 
 export interface IListPizzas {
-  // pizzas: Array<IMainPizza>;
+  pizzas: Array<IBasketPizza>;
   summ: number;
   valuePizzas: number;
-  basketPizzas: Array<IBasketPizza>;
   basketPizzasId: Array<string>;
 }
 

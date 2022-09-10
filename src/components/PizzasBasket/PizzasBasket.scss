@@ -28,6 +28,9 @@
                 font-weight: 700;
                 font-size: 16px;
                 line-height: 19px;
+                &:hover {
+                    cursor: pointer;
+                }
             }
             &-pay {
                 background-color: #fe5f1e;
@@ -49,5 +52,18 @@
     }
     .basket-price {
         margin-bottom: 40px;
+        &__first {
+            font-weight: 400;
+            font-size: 22px;
+            line-height: 27px;
+            color: #000000;
+        }
+        &__pizzas {
+            font-weight: 700;
+        }
+        &__summ {
+            font-weight: 700;
+            color: rgba(254, 95, 30, 1);
+        }
     }
 }

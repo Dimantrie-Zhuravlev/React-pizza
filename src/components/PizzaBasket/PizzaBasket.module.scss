@@ -1,4 +1,58 @@
 .pizza-container {
+    box-sizing: border-box;
     height: 140px;
     border-top: 0.5px solid gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__split {
+        width: 50%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__main {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .pizza-image-container {
+        width: 80px;
+        margin-right: 15px;
+    }
+    .pizza-name {
+        display: inline-block;
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 27px;
+        color: #000000;
+    }
+    .pizza-dough {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        color: #8d8d8d;
+    }
+    .pizza-edit-value {
+        width: 32px;
+        height: 32px;
+        background-color: transparent;
+        border: 2px solid rgba(254, 95, 30, 1);
+        color: rgba(254, 95, 30, 1);
+        border-radius: 50%;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .pizza-delete {
+        width: 32px;
+        height: 32px;
+        background-color: transparent;
+        border: 2px solid #d7d7d7;
+        color: #d7d7d7;
+        border-radius: 50%;
+        &:hover {
+            cursor: pointer;
+        }
+    }
 }

@@ -32,8 +32,11 @@ const HeaderMain = () => {
             </span>
             <div className={classes["to-basket__splash"]}>1</div>
             <span>
-              {useSelector(
-                (state: StatePizzas) => state.SomePizzas.pizzas.length
+              {useSelector((state: StatePizzas) =>
+                state.SomePizzas.pizzas.reduce(
+                  (curr, prev) => curr + prev.value,
+                  0
+                )
               )}
               <ShoppingCartOutlined />
             </span>

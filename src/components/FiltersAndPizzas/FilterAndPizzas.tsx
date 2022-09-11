@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import classes from "classnames";
 import { CaretUpOutlined, CaretDownOutlined } from "@ant-design/icons";
 import { Spin } from "antd";
+import { useSelector } from "react-redux";
 
-import { IMeatFilter, IRatingFilter } from "../../types/mainTypes";
+import { StateMainFilters } from "../../types/StateRedux";
+import { IMeatFilter } from "../../types/mainFilters";
 import { IMainPizza } from "../../types/pizzas";
 import MainPizza from "../MainPizza";
 import ModalFilter from "../ModalFilter";
@@ -15,9 +17,9 @@ const FilterPizzas = () => {
   const [meatFilter, setmeatFilter] = useState<IMeatFilter>("Все");
   const [isChangeFilter, setchange] = useState(false);
   const [pizzas, setPizzas] = useState<Array<IMainPizza>>([]);
-  const [ratingFilter, setratingFilter] =
-    useState<IRatingFilter>("популярности");
-  const ratingFilters: IRatingFilter[] = ["популярности", "цене", "алфавиту"];
+  const currentRatingFilter = useSelector(
+    (state: StateMainFilters) => state.FiltersMain.demandFilter
+  );
   const typeFilters: IMeatFilter[] = [
     "Все",
     "Мясные",
@@ -29,12 +31,7 @@ const FilterPizzas = () => {
   const [isLoading, changeLoading] = useState(true);
   const modalFilter = isChangeFilter ? (
     <div style={{ position: "absolute", right: "0", top: "30px" }}>
-      <ModalFilter
-        ratingFilter={ratingFilters}
-        changeState={setratingFilter}
-        currentFilter={ratingFilter}
-        changeVisibility={setchange}
-      />
+      <ModalFilter changeVisibility={setchange} />
     </div>
   ) : null;
   useEffect(() => {
@@ -43,6 +40,14 @@ const FilterPizzas = () => {
       changeLoading(false);
     });
   }, []);
+  const pizzasDemand =
+    currentRatingFilter === "цене"
+      ? pizzas.sort((a, b) => a.price[0] - b.price[0])
+      : currentRatingFilter === "популярности"
+      ? pizzas.sort((a, b) => a.rating - b.rating)
+      : pizzas.sort((a, b) =>
+          a.title < b.title ? -1 : a.title < b.title ? 1 : 0
+        );
 
   return (
     <>
@@ -71,7 +76,7 @@ const FilterPizzas = () => {
             onClick={() => setchange(!isChangeFilter)}
             className={styles["filter-rating__nameFilter"]}
           >
-            {ratingFilter}
+            {currentRatingFilter}
           </span>
           {modalFilter}
         </div>
@@ -83,7 +88,7 @@ const FilterPizzas = () => {
         </div>
       ) : (
         <div className={styles["pizzas-container"]}>
-          {pizzas.map((elem) => (
+          {pizzasDemand.map((elem) => (
             <React.Fragment key={elem.id}>
               <MainPizza pizza={elem} />
             </React.Fragment>

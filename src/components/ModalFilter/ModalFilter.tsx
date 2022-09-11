@@ -1,26 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import classNames from "classnames";
+import { useSelector, useDispatch } from "react-redux";
 
-import { IRatingFilter } from "../../types/mainTypes";
+import { IRatingFilter } from "../../types/mainFilters";
+import { StateMainFilters } from "../../types/StateRedux";
+import { setDemandFilter } from "../../store/slices/MainFilters";
 
 import style from "./ModalFilter.module.scss";
 
-const ModalFilter = (props: {
-  ratingFilter: IRatingFilter[];
-  changeState: (filter: IRatingFilter) => void;
-  currentFilter: IRatingFilter;
-  changeVisibility: (visib: boolean) => void;
-}) => {
-  const [currentFilter, changecurrentFilter] = useState(props.currentFilter);
+const ModalFilter = (props: { changeVisibility: (visib: boolean) => void }) => {
+  const dispatch = useDispatch();
+  const currfill = useSelector(
+    (state: StateMainFilters) => state.FiltersMain.demandFilter
+  );
+  const ratingFilters: IRatingFilter[] = ["популярности", "цене", "алфавиту"];
+  //  Если что менять тут типы сортировки
   return (
     <div className={style["modal-container"]}>
-      {props.ratingFilter.map((res) => (
+      {ratingFilters.map((res) => (
         <span
           key={res}
-          className={classNames({ [style.active]: currentFilter === res })}
+          className={classNames({
+            [style.active]: currfill === res,
+          })}
           onClick={() => {
-            changecurrentFilter(res);
-            props.changeState(res);
+            dispatch(setDemandFilter(res));
             props.changeVisibility(false);
           }}
         >

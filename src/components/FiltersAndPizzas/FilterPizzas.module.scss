@@ -27,10 +27,16 @@
 .filter-rating {
     margin: auto 0;
     position: relative;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
     &__nameFilter {
         color: #fe5f1e;
         margin-left: 8px;
         border-bottom: 1px dashed #fe5f1e;
+        font-weight: 400;
+        font-size: 17px;
+        line-height: 17px;
         &:hover {
             cursor: pointer;
         }

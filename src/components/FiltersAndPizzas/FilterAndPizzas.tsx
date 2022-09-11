@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import classes from "classnames";
 import { CaretUpOutlined, CaretDownOutlined } from "@ant-design/icons";
 import { Spin } from "antd";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
+import { setConsistFilter } from "../../store/slices/MainFilters";
 import { StateMainFilters } from "../../types/StateRedux";
 import { IMeatFilter } from "../../types/mainFilters";
 import { IMainPizza } from "../../types/pizzas";
@@ -14,11 +15,14 @@ import { fetchPizzas } from "../../services/Pizzas/kek";
 import styles from "./FilterPizzas.module.scss";
 
 const FilterPizzas = () => {
-  const [meatFilter, setmeatFilter] = useState<IMeatFilter>("Все");
+  const dispatch = useDispatch();
   const [isChangeFilter, setchange] = useState(false);
   const [pizzas, setPizzas] = useState<Array<IMainPizza>>([]);
   const currentRatingFilter = useSelector(
     (state: StateMainFilters) => state.FiltersMain.demandFilter
+  );
+  const currentConsistFilter = useSelector(
+    (state: StateMainFilters) => state.FiltersMain.consistFilter
   );
   const typeFilters: IMeatFilter[] = [
     "Все",
@@ -40,12 +44,28 @@ const FilterPizzas = () => {
       changeLoading(false);
     });
   }, []);
+  //  Фильтрация состава
+  const pizzasFilter =
+    currentConsistFilter === "Все"
+      ? pizzas
+      : currentConsistFilter === "Мясные"
+      ? pizzas.filter((elem) => elem.consist.includes("Мясо"))
+      : currentConsistFilter === "Вегетарианская"
+      ? pizzas.filter((elem) => !elem.consist.includes("Мясо"))
+      : currentConsistFilter === "Гриль"
+      ? pizzas.filter((elem) => elem.consist.includes("Гриль"))
+      : currentConsistFilter === "Острые"
+      ? pizzas.filter((elem) => elem.consist.includes("Острая"))
+      : currentConsistFilter === "Закрытые"
+      ? pizzas.filter((elem) => elem.consist.includes("Закрытая"))
+      : [];
+  // Сортировка спроса
   const pizzasDemand =
     currentRatingFilter === "цене"
-      ? pizzas.sort((a, b) => a.price[0] - b.price[0])
+      ? pizzasFilter.sort((a, b) => a.price[0] - b.price[0])
       : currentRatingFilter === "популярности"
-      ? pizzas.sort((a, b) => a.rating - b.rating)
-      : pizzas.sort((a, b) =>
+      ? pizzasFilter.sort((a, b) => a.rating - b.rating)
+      : pizzasFilter.sort((a, b) =>
           a.title < b.title ? -1 : a.title < b.title ? 1 : 0
         );
 
@@ -56,9 +76,9 @@ const FilterPizzas = () => {
           {typeFilters.map((res: IMeatFilter) => (
             <button
               className={classes(styles.typePizza, {
-                [styles.active]: meatFilter === res,
+                [styles.active]: currentConsistFilter === res,
               })}
-              onClick={() => setmeatFilter(res)}
+              onClick={() => dispatch(setConsistFilter(res))}
               key={res}
             >
               {res}

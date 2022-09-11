@@ -7,5 +7,6 @@ export interface IMainPizza {
   price: Array<number>;
   category: number;
   rating: number;
+  consist: Array<string>;
 }
 export type IListPizzas = Array<IMainPizza>;

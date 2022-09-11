@@ -1,4 +1,4 @@
-import { IRatingFilter } from "./mainFilters";
+import { ReduxMainFilters } from "./mainFilters";
 
 export interface IBasketPizza {
   id: string;
@@ -15,10 +15,6 @@ export interface IListPizzas {
 
 export interface StatePizzas {
   SomePizzas: IListPizzas;
-}
-
-export interface ReduxMainFilters {
-  demandFilter: IRatingFilter;
 }
 
 export interface StateMainFilters {

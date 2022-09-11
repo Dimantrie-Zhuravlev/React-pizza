@@ -8,7 +8,6 @@ export interface IBasketPizza {
 
 export interface IListPizzas {
   pizzas: Array<IBasketPizza>;
-  summ: number;
   basketPizzasId: Array<string>;
 }
 

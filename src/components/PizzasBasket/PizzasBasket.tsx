@@ -16,9 +16,14 @@ import "./PizzasBasket.scss";
 const PizzasBasket = () => {
   const dispatch = useDispatch();
   const items = useSelector((state: StatePizzas) => state.SomePizzas.pizzas);
-  const totalPrice = useSelector((state: StatePizzas) => state.SomePizzas.summ);
+  const totalPrice = useSelector((state: StatePizzas) =>
+    state.SomePizzas.pizzas.reduce(
+      (prev, curr) => prev + curr.price * curr.value,
+      0
+    )
+  );
   const totalPizzas = useSelector((state: StatePizzas) =>
-    state.SomePizzas.pizzas.reduce((curr, prev) => curr + prev.value, 0)
+    state.SomePizzas.pizzas.reduce((prev, curr) => prev + curr.value, 0)
   );
   return (
     <div className={"PizzasBasket-container"}>

@@ -6,7 +6,6 @@ import { IBasketPizza } from "../../types/StateRedux";
 import {
   addEditPizzaBasket,
   subtractEditPizzaBasket,
-  addSumm,
   deleteOneTypePizza,
 } from "../../store/slices/BasketInfo";
 
@@ -38,7 +37,6 @@ const PizzaBasket = (props: { pizza: IBasketPizza }) => {
           <button
             onClick={() => {
               dispatch(addEditPizzaBasket(id));
-              dispatch(addSumm(price));
               changeCurrentValue(currentValue + 1);
             }}
             className={style["pizza-edit-value"]}
@@ -51,7 +49,6 @@ const PizzaBasket = (props: { pizza: IBasketPizza }) => {
           <button
             onClick={() => {
               dispatch(subtractEditPizzaBasket(id));
-              dispatch(addSumm(-price));
               changeCurrentValue(currentValue - 1);
               if (currentValue === 1) {
                 dispatch(deleteOneTypePizza(id));
@@ -66,7 +63,6 @@ const PizzaBasket = (props: { pizza: IBasketPizza }) => {
         <button
           onClick={() => {
             dispatch(deleteOneTypePizza(id));
-            dispatch(addSumm(-price * value));
           }}
           className={style["pizza-delete"]}
         >

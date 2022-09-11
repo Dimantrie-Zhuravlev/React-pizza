@@ -27,7 +27,12 @@ const HeaderMain = () => {
         <Link to={"./basket"} style={{ textDecoration: "none" }}>
           <div className={classes["header-container__to-basket"]}>
             <span>
-              {useSelector((state: StatePizzas) => state.SomePizzas.summ)}{" "}
+              {useSelector((state: StatePizzas) =>
+                state.SomePizzas.pizzas.reduce(
+                  (prev, curr) => prev + curr.price * curr.value,
+                  0
+                )
+              )}
               &#8381;
             </span>
             <div className={classes["to-basket__splash"]}>1</div>

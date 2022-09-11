@@ -36,7 +36,7 @@ const PizzaBasket = (props: { pizza: IBasketPizza }) => {
         <div>
           <button
             onClick={() => {
-              dispatch(addEditPizzaBasket(id));
+              dispatch(addEditPizzaBasket({ id }));
               changeCurrentValue(currentValue + 1);
             }}
             className={style["pizza-edit-value"]}
@@ -48,10 +48,10 @@ const PizzaBasket = (props: { pizza: IBasketPizza }) => {
           </span>
           <button
             onClick={() => {
-              dispatch(subtractEditPizzaBasket(id));
+              dispatch(subtractEditPizzaBasket({ id }));
               changeCurrentValue(currentValue - 1);
               if (currentValue === 1) {
-                dispatch(deleteOneTypePizza(id));
+                dispatch(deleteOneTypePizza({ id }));
               }
             }}
             className={style["pizza-edit-value"]}
@@ -59,10 +59,13 @@ const PizzaBasket = (props: { pizza: IBasketPizza }) => {
             -
           </button>
         </div>
-        <span className={style["pizza-name"]}>{price * value} &#8381;</span>
+        <span className={style["pizza-name"]}>
+          {price * value} &#8381; /
+          <span className={style["pizza-one-price"]}>{price} за шт</span>
+        </span>
         <button
           onClick={() => {
-            dispatch(deleteOneTypePizza(id));
+            dispatch(deleteOneTypePizza({ id }));
           }}
           className={style["pizza-delete"]}
         >

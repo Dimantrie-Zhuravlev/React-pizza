@@ -3,19 +3,12 @@ import className from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 
 import { IMainPizza } from "../../types/pizzas";
-import {
-  addNewIdPizzaId,
-  addNewPizzaBasket,
-  addEditPizzaBasket,
-} from "../../store/slices/BasketInfo";
+import { addNewPizzaBasket } from "../../store/slices/BasketInfo";
 import { StatePizzas } from "../../types/StateRedux";
 
 import "./MainPizza.scss";
 
 const MainPizza = (props: { pizza: IMainPizza }) => {
-  const pizzasId = useSelector(
-    (state: StatePizzas) => state.SomePizzas.basketPizzasId
-  );
   const valuePizzas = useSelector((state: StatePizzas) =>
     state.SomePizzas.pizzas
       .filter((elem) => +elem.id[0] === props.pizza.id)
@@ -113,21 +106,14 @@ const MainPizza = (props: { pizza: IMainPizza }) => {
           onClick={() => {
             const newId = `${props.pizza.id} ${dough} ${size}`;
             setTotalPizzas(totalpizzas + 1);
-            // dispatch(addOnePizza());
-            if (!pizzasId.includes(newId))
-              dispatch(
-                addNewPizzaBasket({
-                  id: newId,
-                  imageUrl,
-                  name,
-                  value: 1,
-                  price: currentPrice,
-                })
-              );
-            else {
-              dispatch(addEditPizzaBasket(newId));
-            }
-            dispatch(addNewIdPizzaId(newId));
+            dispatch(
+              addNewPizzaBasket({
+                id: newId,
+                imageUrl,
+                name,
+                price: currentPrice,
+              })
+            );
           }}
         >
           + добавить {currentPizzas}

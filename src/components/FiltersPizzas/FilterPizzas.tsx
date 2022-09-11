@@ -13,18 +13,7 @@ import styles from "./FilterPizzas.module.scss";
 const FilterPizzas = () => {
   const [meatFilter, setmeatFilter] = useState<IMeatFilter>("Все");
   const [isChangeFilter, setchange] = useState(false);
-  const [pizzas, setPizzas] = useState<Array<IMainPizza>>([
-    {
-      id: 0,
-      imageUrl: "",
-      title: "",
-      types: [0],
-      sizes: [0],
-      price: [0],
-      category: 4,
-      rating: 0,
-    },
-  ]);
+  const [pizzas, setPizzas] = useState<Array<IMainPizza>>([]);
   const [ratingFilter, setratingFilter] =
     useState<IRatingFilter>("популярности");
   const ratingFilters: IRatingFilter[] = ["популярности", "цене", "алфавиту"];

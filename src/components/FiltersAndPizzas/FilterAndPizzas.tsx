@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import classes from "classnames";
 import { CaretUpOutlined, CaretDownOutlined } from "@ant-design/icons";
+import { Spin } from "antd";
 
 import { IMeatFilter, IRatingFilter } from "../../types/mainTypes";
 import { IMainPizza } from "../../types/pizzas";
@@ -25,6 +26,7 @@ const FilterPizzas = () => {
     "Острые",
     "Закрытые",
   ];
+  const [isLoading, changeLoading] = useState(true);
   const modalFilter = isChangeFilter ? (
     <div style={{ position: "absolute", right: "0", top: "30px" }}>
       <ModalFilter
@@ -36,7 +38,10 @@ const FilterPizzas = () => {
     </div>
   ) : null;
   useEffect(() => {
-    fetchPizzas().then((res) => setPizzas(res));
+    fetchPizzas().then((res) => {
+      setPizzas(res);
+      changeLoading(false);
+    });
   }, []);
 
   return (
@@ -72,13 +77,19 @@ const FilterPizzas = () => {
         </div>
       </div>
       <h2 className={styles["all-pizzas"]}>Все пиццы</h2>
-      <div className={styles["pizzas-container"]}>
-        {pizzas.map((elem) => (
-          <React.Fragment key={elem.id}>
-            <MainPizza pizza={elem} />
-          </React.Fragment>
-        ))}
-      </div>
+      {isLoading ? (
+        <div style={{ textAlign: "center", color: "red" }}>
+          <Spin size="large" />
+        </div>
+      ) : (
+        <div className={styles["pizzas-container"]}>
+          {pizzas.map((elem) => (
+            <React.Fragment key={elem.id}>
+              <MainPizza pizza={elem} />
+            </React.Fragment>
+          ))}
+        </div>
+      )}
     </>
   );
 };

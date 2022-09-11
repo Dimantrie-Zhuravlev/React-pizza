@@ -18,7 +18,6 @@ const HeaderNameSite = () => {
           </span>
         </div>
       </div>
-      ;
     </>
   );
 };

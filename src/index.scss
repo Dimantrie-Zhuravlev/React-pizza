@@ -22,4 +22,16 @@ html body {
     padding: 40px;
     font-family: "Proxima Nova";
     font-style: normal;
+    @media (min-width: 360px) {
+        padding: 12px;
+    }
+    @media (min-width: 768px) {
+        padding: 24px;
+    }
+    @media (min-width: 1024px) {
+        padding: 32px;
+    }
+    @media (min-width: 1920px) {
+        padding: 40px;
+    }
 }

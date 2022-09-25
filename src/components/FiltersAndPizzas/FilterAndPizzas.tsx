@@ -72,7 +72,7 @@ const FilterPizzas = () => {
   return (
     <>
       <div className={styles["filters-container"]}>
-        <div>
+        <div className={styles["filter-container"]}>
           {typeFilters.map((res: IMeatFilter) => (
             <button
               className={classes(styles.typePizza, {

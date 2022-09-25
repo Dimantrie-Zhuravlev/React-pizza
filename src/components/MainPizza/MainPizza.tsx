@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, FC } from "react";
 import className from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -8,7 +8,7 @@ import { StatePizzas } from "../../types/StateRedux";
 
 import "./MainPizza.scss";
 
-const MainPizza = (props: { pizza: IMainPizza }) => {
+const MainPizza: FC<{ pizza: IMainPizza }> = (props) => {
   const valuePizzas = useSelector((state: StatePizzas) =>
     state.SomePizzas.pizzas
       .filter((elem) => +elem.id[0] === props.pizza.id)

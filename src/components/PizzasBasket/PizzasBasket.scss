@@ -1,5 +1,4 @@
 .PizzasBasket-container {
-    padding: 100px 0;
     .basket-flex {
         display: flex;
         justify-content: space-between;
@@ -7,9 +6,19 @@
         margin-bottom: 30px;
         &__name {
             font-weight: 700;
-            font-size: 32px;
-            line-height: 39px;
             color: #000000;
+            @media (min-width: 360px) {
+                font-size: 16px;
+                line-height: 24px;
+            }
+            @media (min-width: 768px) {
+                font-size: 24px;
+                line-height: 28px;
+            }
+            @media (min-width: 1024px) {
+                font-size: 32px;
+                line-height: 39px;
+            }
         }
         &__basket {
             font-weight: 400;
@@ -18,18 +27,32 @@
             color: #b6b6b6;
             &:hover {
                 cursor: pointer;
+                color: black;
             }
         }
         &__bottom {
             button {
-                width: 210px;
-                height: 55px;
-                border-radius: 30px;
                 font-weight: 700;
-                font-size: 16px;
-                line-height: 19px;
                 &:hover {
                     cursor: pointer;
+                }
+                @media (min-width: 360px) {
+                    width: 120px;
+                    height: 40px;
+                    border-radius: 15px;
+                    font-size: 14px;
+                    line-height: 16px;
+                }
+                @media (min-width: 768px) {
+                    width: 180px;
+                    height: 50px;
+                    border-radius: 30px;
+                    font-size: 16px;
+                    line-height: 19px;
+                }
+                @media (min-width: 1024px) {
+                    width: 210px;
+                    height: 55px;
                 }
             }
             &-pay {
@@ -46,6 +69,7 @@
                 border: 1px solid #d3d3d3;
                 &:hover {
                     cursor: pointer;
+                    color: #000000;
                 }
             }
         }
@@ -54,9 +78,19 @@
         margin-bottom: 40px;
         &__first {
             font-weight: 400;
-            font-size: 22px;
-            line-height: 27px;
             color: #000000;
+            @media (min-width: 360px) {
+                font-size: 14px;
+                line-height: 16px;
+            }
+            @media (min-width: 768px) {
+                font-size: 16px;
+                line-height: 18px;
+            }
+            @media (min-width: 1024px) {
+                font-size: 22px;
+                line-height: 27px;
+            }
         }
         &__pizzas {
             font-weight: 700;
@@ -65,5 +99,14 @@
             font-weight: 700;
             color: rgba(254, 95, 30, 1);
         }
+    }
+    @media (min-width: 360px) {
+        padding-top: 20px;
+    }
+    @media (min-width: 768px) {
+        padding-top: 40px;
+    }
+    @media (min-width: 1024px) {
+        padding-top: 100px;
     }
 }

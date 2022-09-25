@@ -1,15 +1,16 @@
 .pizza-container {
     box-sizing: border-box;
-    height: 140px;
     border-top: 0.5px solid gray;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    &__split {
-        width: 50%;
-        display: flex;
+    justify-content: space-between;
+    @media (min-width: 360px) {
+        height: 100px;
         justify-content: space-between;
-        align-items: center;
+    }
+    @media (min-width: 768px) {
+        justify-content: space-between;
+        height: 140px;
     }
     &__main {
         display: flex;
@@ -17,50 +18,133 @@
         align-items: center;
     }
     .pizza-image-container {
-        width: 80px;
-        margin-right: 15px;
+        @media (min-width: 360px) {
+            margin-right: 7px;
+            width: 80px;
+        }
+        @media (min-width: 768px) {
+            margin-right: 15px;
+        }
+        @media (min-width: 1024px) {
+            margin-right: 15px;
+            width: 120px;
+        }
+    }
+    &-info {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
     }
     .pizza-name {
         display: inline-block;
         font-weight: 700;
-        font-size: 22px;
-        line-height: 27px;
         color: #000000;
+        @media (min-width: 360px) {
+            font-size: 13px;
+            line-height: 16px;
+        }
+        @media (min-width: 768px) {
+            font-size: 18px;
+            line-height: 20px;
+        }
+        @media (min-width: 1024px) {
+            font-size: 22px;
+            line-height: 27px;
+        }
     }
     .pizza-dough {
         font-weight: 400;
-        font-size: 18px;
-        line-height: 22px;
         color: #8d8d8d;
+        @media (min-width: 360px) {
+            font-size: 11px;
+            line-height: 13px;
+        }
+        @media (min-width: 768px) {
+            font-size: 13px;
+            line-height: 18px;
+        }
+        @media (min-width: 1024px) {
+            font-size: 18px;
+            line-height: 22px;
+        }
+    }
+    .pizza-edit-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
     .pizza-edit-value {
-        width: 32px;
-        height: 32px;
         background-color: transparent;
-        border: 2px solid rgba(254, 95, 30, 1);
         color: rgba(254, 95, 30, 1);
         border-radius: 50%;
         &:hover {
             cursor: pointer;
         }
+        @media (min-width: 360px) {
+            width: 24px;
+            height: 24px;
+            border: 1px solid rgba(254, 95, 30, 1);
+        }
+        @media (min-width: 768px) {
+            width: 32px;
+            height: 32px;
+            border: 2px solid rgba(254, 95, 30, 1);
+        }
     }
     .pizza-delete {
-        width: 32px;
-        height: 32px;
         background-color: transparent;
-        border: 2px solid #d7d7d7;
         color: #d7d7d7;
         border-radius: 50%;
         &:hover {
             cursor: pointer;
+            border: 2px solid red;
+            color: red;
+        }
+        @media (min-width: 360px) {
+            width: 24px;
+            height: 24px;
+            border: 1px solid #d7d7d7;
+            margin-left: 4px;
+        }
+        @media (min-width: 768px) {
+            width: 32px;
+            height: 32px;
+            border: 2px solid #d7d7d7;
+            margin-left: 0;
         }
     }
-    .pizza-one-price {
-        display: inline-block;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 18px;
-        color: #8d8d8d;
-        margin-left: 5px;
+    .pizza-oneprice-container {
+        display: flex;
+        align-items: center;
+        span {
+            white-space: nowrap;
+        }
+        .pizza-one-price {
+            font-weight: 400;
+            color: #8d8d8d;
+            margin-left: 5px;
+            @media (min-width: 360px) {
+                font-size: 12px;
+                line-height: 14px;
+            }
+            @media (min-width: 768px) {
+                font-size: 14px;
+                line-height: 18px;
+            }
+        }
+        @media (min-width: 360px) {
+            flex-direction: column;
+        }
+        @media (min-width: 768px) {
+            flex-direction: row;
+        }
+    }
+    .orange-margin {
+        @media (min-width: 360px) {
+            margin: 0 4px;
+        }
+        @media (min-width: 768px) {
+            margin: 0 12px;
+        }
     }
 }

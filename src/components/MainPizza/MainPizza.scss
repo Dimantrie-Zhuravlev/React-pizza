@@ -19,6 +19,10 @@ img {
     color: #000000;
     text-align: center;
     margin-bottom: 22px;
+    @media (min-width: 1920px) {
+        font-size: 23px;
+        line-height: 27px;
+    }
 }
 .pizza-character {
     width: 100%;
@@ -38,6 +42,10 @@ img {
         &:hover {
             cursor: pointer;
             border: 0.5px solid black;
+        }
+        @media (min-width: 1920px) {
+            font-size: 17px;
+            line-height: 20px;
         }
     }
     .active-style-state {
@@ -72,23 +80,41 @@ img {
         font-size: 22px;
         line-height: 27px;
         color: #000000;
+        @media (min-width: 1920px) {
+            font-size: 25px;
+            line-height: 28px;
+        }
+        @media (min-width: 1024px) {
+            font-size: 20px;
+            line-height: 22px;
+        }
     }
     button {
         display: flex;
         color: #fe5f1e;
         font-weight: 700;
-        height: 40px;
+        height: 32px;
         box-sizing: border-box;
         font-size: 16px;
         line-height: 19px;
         background: transparent;
         border: 1px solid #fe5f1e;
         border-radius: 30px;
-        padding: 8px 25px;
+        padding: 4px 8px;
         &:hover {
             background: #fe5f1e;
             color: white;
             cursor: pointer;
+        }
+        @media (min-width: 1920px) {
+            font-size: 20px;
+            line-height: 23px;
+            height: 40px;
+            padding: 8px 25px;
+        }
+        @media (min-width: 1920px) {
+            font-size: 18px;
+            line-height: 21px;
         }
     }
 }

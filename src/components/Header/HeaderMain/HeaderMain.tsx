@@ -22,7 +22,7 @@ const HeaderMain = () => {
                   0
                 )
               )}
-              &#8381;
+              {` `}&#8381;
             </span>
             <div className={classes["to-basket__splash"]}>1</div>
             <span>
@@ -32,7 +32,7 @@ const HeaderMain = () => {
                   0
                 )
               )}
-              <ShoppingCartOutlined />
+              {` `} <ShoppingCartOutlined />
             </span>
           </div>
         </Link>

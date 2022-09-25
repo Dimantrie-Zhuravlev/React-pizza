@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import classNames from "classnames";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -8,7 +8,9 @@ import { setDemandFilter } from "../../store/slices/MainFilters";
 
 import style from "./ModalFilter.module.scss";
 
-const ModalFilter = (props: { changeVisibility: (visib: boolean) => void }) => {
+const ModalFilter: FC<{ changeVisibility: (visib: boolean) => void }> = (
+  props
+) => {
   const dispatch = useDispatch();
   const currfill = useSelector(
     (state: StateMainFilters) => state.FiltersMain.demandFilter

@@ -2,17 +2,14 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 35px;
+    align-items: center;
     &__to-basket {
         background-color: #fe5f1e;
         border: none;
-        border-radius: 30px;
-        padding: 12px 20px;
-        border-radius: 30px;
         font-weight: 700;
-        font-size: 16px;
-        line-height: 19px;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         color: white;
         &:hover {
             cursor: pointer;
@@ -20,10 +17,38 @@
         span {
             display: inline-block;
             margin: auto 0;
+            @media (min-width: 360px) {
+                font-size: 12px;
+                line-height: 14px;
+            }
+            @media (min-width: 1024px) {
+                font-size: 18px;
+                line-height: 22px;
+            }
+            @media (min-width: 1920px) {
+                font-size: 22px;
+                line-height: 25px;
+            }
+        }
+        @media (min-width: 360px) {
+            padding: 4px 12px;
+            border-radius: 12px;
+        }
+        @media (min-width: 768px) {
+            padding: 10px 14px;
+            border-radius: 14px;
+        }
+        @media (min-width: 1920px) {
+            padding: 20px 28px;
+            border-radius: 28px;
         }
     }
     &__name {
         display: flex;
+        max-width: 60%;
+    }
+    @media (min-width: 360px) {
+        margin-bottom: 10px;
     }
 }
 .header-logo {
@@ -31,16 +56,27 @@
 }
 .header-name {
     font-weight: 800;
-    font-size: 24px;
-    line-height: 29px;
+
     text-transform: uppercase;
     color: #181818;
+    @media (min-width: 768px) {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    @media (min-width: 1920px) {
+        font-size: 24px;
+        line-height: 29px;
+    }
 }
 .header-description {
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
     color: #7b7b7b;
+    @media (min-width: 1920px) {
+        font-size: 19px;
+        line-height: 22px;
+    }
 }
 .to-basket__splash {
     width: 1px;

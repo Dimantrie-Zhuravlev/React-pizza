@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { CloseOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
+import cx from "classnames";
 
 import { IBasketPizza } from "../../types/StateRedux";
 import {
@@ -32,20 +33,8 @@ const PizzaBasket = (props: { pizza: IBasketPizza }) => {
           </span>
         </div>
       </div>
-      <div className={style["pizza-container__split"]}>
-        <div>
-          <button
-            onClick={() => {
-              dispatch(addEditPizzaBasket({ id }));
-              changeCurrentValue(currentValue + 1);
-            }}
-            className={style["pizza-edit-value"]}
-          >
-            +
-          </button>
-          <span style={{ margin: "0 16px" }} className={style["pizza-name"]}>
-            {currentValue}
-          </span>
+      <div className={style["pizza-container-info"]}>
+        <div className={style["pizza-edit-container"]}>
           <button
             onClick={() => {
               dispatch(subtractEditPizzaBasket({ id }));
@@ -58,20 +47,34 @@ const PizzaBasket = (props: { pizza: IBasketPizza }) => {
           >
             -
           </button>
+          <span className={cx(style["pizza-name"], style["orange-margin"])}>
+            {currentValue}
+          </span>
+          <button
+            onClick={() => {
+              dispatch(addEditPizzaBasket({ id }));
+              changeCurrentValue(currentValue + 1);
+            }}
+            className={style["pizza-edit-value"]}
+          >
+            +
+          </button>
         </div>
-        <span className={style["pizza-name"]}>
-          {price * value} &#8381; /
-          <span className={style["pizza-one-price"]}>{price} за шт</span>
-        </span>
-        <button
-          onClick={() => {
-            dispatch(deleteOneTypePizza({ id }));
-          }}
-          className={style["pizza-delete"]}
+        <div
+          className={cx(style["pizza-name"], style["pizza-oneprice-container"])}
         >
-          <CloseOutlined />
-        </button>
+          <span>{price * value} &#8381; /</span>
+          <span className={style["pizza-one-price"]}>{price} за шт</span>
+        </div>
       </div>
+      <button
+        onClick={() => {
+          dispatch(deleteOneTypePizza({ id }));
+        }}
+        className={style["pizza-delete"]}
+      >
+        <CloseOutlined />
+      </button>
     </div>
   );
 };

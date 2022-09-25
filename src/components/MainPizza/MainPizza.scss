@@ -1,6 +1,14 @@
 .pizza-container {
     display: flex;
     flex-direction: column;
+    @media (min-width: 360px) {
+        padding-bottom: 6px;
+        border-bottom: 1px solid gray;
+    }
+    @media (min-width: 768px) {
+        padding-bottom: 0;
+        border-bottom: 1px solid gray;
+    }
 }
 img {
     width: 100%;
@@ -106,15 +114,15 @@ img {
             color: white;
             cursor: pointer;
         }
+        @media (min-width: 1440px) {
+            font-size: 18px;
+            line-height: 21px;
+        }
         @media (min-width: 1920px) {
             font-size: 20px;
             line-height: 23px;
             height: 40px;
             padding: 8px 25px;
-        }
-        @media (min-width: 1920px) {
-            font-size: 18px;
-            line-height: 21px;
         }
     }
 }

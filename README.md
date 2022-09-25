@@ -1,1 +1,1 @@
-https://react-pizza-n2uuusjyh-dimantrie-zhuravlev.vercel.app
+https://react-pizza-ja9wz7ltl-dimantrie-zhuravlev.vercel.app

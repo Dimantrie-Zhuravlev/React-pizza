@@ -12,11 +12,3 @@ export interface IListPizzas {
   pizzas: Array<IBasketPizza>;
   basketPizzasId: Array<string>;
 }
-
-export interface StatePizzas {
-  SomePizzas: IListPizzas;
-}
-
-export interface StateMainFilters {
-  FiltersMain: ReduxMainFilters;
-}

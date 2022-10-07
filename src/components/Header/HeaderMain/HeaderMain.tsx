@@ -1,12 +1,11 @@
 import React from "react";
 import { ShoppingCartOutlined } from "@ant-design/icons";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { StatePizzas } from "../../../types/StateRedux";
 import SeparatorLine from "../../SeparatorLine";
 import classes from "../Header.module.scss";
 import HeaderNameSite from "../HeaderNameSite/HeaderNameSite";
+import { useAppSelector } from "../../../hooks/redux";
 
 const HeaderMain = () => {
   return (
@@ -16,7 +15,7 @@ const HeaderMain = () => {
         <Link to={"./basket"} style={{ textDecoration: "none" }}>
           <div className={classes["header-container__to-basket"]}>
             <span>
-              {useSelector((state: StatePizzas) =>
+              {useAppSelector((state) =>
                 state.SomePizzas.pizzas.reduce(
                   (prev, curr) => prev + curr.price * curr.value,
                   0
@@ -26,7 +25,7 @@ const HeaderMain = () => {
             </span>
             <div className={classes["to-basket__splash"]}>1</div>
             <span>
-              {useSelector((state: StatePizzas) =>
+              {useAppSelector((state) =>
                 state.SomePizzas.pizzas.reduce(
                   (curr, prev) => curr + prev.value,
                   0

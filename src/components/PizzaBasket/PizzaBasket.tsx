@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { CloseOutlined } from "@ant-design/icons";
-import { useDispatch } from "react-redux";
 import cx from "classnames";
 
+import { useAppDispatch } from "../../hooks/redux";
 import { IBasketPizza } from "../../types/StateRedux";
 import {
   addEditPizzaBasket,
@@ -16,7 +16,7 @@ const PizzaBasket = (props: { pizza: IBasketPizza }) => {
   const { imageUrl, name, id, value, price } = props.pizza;
   const [, dough, size] = id.split(" ");
   const [currentValue, changeCurrentValue] = useState(value);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   return (
     <div className={style["pizza-container"]}>
       <div className={style["pizza-container__main"]}>

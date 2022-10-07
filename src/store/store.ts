@@ -9,10 +9,13 @@ const rootReducer = combineReducers({
 });
 
 /* eslint-disable no-underscore-dangle */
-export const store = configureStore({
-  reducer: rootReducer,
-});
+export const setStore = () =>
+  configureStore({
+    reducer: rootReducer,
+  });
 
-export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppStore = ReturnType<typeof setStore>;
+export type AppDispatch = AppStore["dispatch"];
 
-export default store;
+export default setStore;

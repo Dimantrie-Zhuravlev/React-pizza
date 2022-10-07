@@ -1,21 +1,20 @@
 import React, { useState, FC } from "react";
 import className from "classnames";
-import { useDispatch, useSelector } from "react-redux";
 
 import { IMainPizza } from "../../types/pizzas";
 import { addNewPizzaBasket } from "../../store/slices/BasketInfo";
-import { StatePizzas } from "../../types/StateRedux";
+import { useAppSelector, useAppDispatch } from "../../hooks/redux";
 
 import "./MainPizza.scss";
 
 const MainPizza: FC<{ pizza: IMainPizza }> = (props) => {
-  const valuePizzas = useSelector((state: StatePizzas) =>
+  const valuePizzas = useAppSelector((state) =>
     state.SomePizzas.pizzas
       .filter((elem) => +elem.id[0] === props.pizza.id)
       .reduce((prev, curr) => prev + curr.value, 0)
   );
   const { imageUrl, title: name } = props.pizza;
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const startDough = props.pizza.types[0] === 0 ? "тонкое" : "традиционное";
   const startSize =
     props.pizza.sizes[0] === 26 ? 26 : props.pizza.sizes[0] === 30 ? 30 : 40;

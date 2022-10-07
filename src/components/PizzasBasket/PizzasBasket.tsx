@@ -4,25 +4,24 @@ import {
   DeleteOutlined,
   LeftOutlined,
 } from "@ant-design/icons";
-import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { deleteBasket } from "../../store/slices/BasketInfo";
 import PizzaBasket from "../PizzaBasket";
-import { StatePizzas } from "../../types/StateRedux";
+import { useAppSelector, useAppDispatch } from "../../hooks/redux";
 
 import "./PizzasBasket.scss";
 
 const PizzasBasket = () => {
-  const dispatch = useDispatch();
-  const items = useSelector((state: StatePizzas) => state.SomePizzas.pizzas);
-  const totalPrice = useSelector((state: StatePizzas) =>
+  const dispatch = useAppDispatch();
+  const items = useAppSelector((state) => state.SomePizzas.pizzas);
+  const totalPrice = useAppSelector((state) =>
     state.SomePizzas.pizzas.reduce(
       (prev, curr) => prev + curr.price * curr.value,
       0
     )
   );
-  const totalPizzas = useSelector((state: StatePizzas) =>
+  const totalPizzas = useAppSelector((state) =>
     state.SomePizzas.pizzas.reduce((prev, curr) => prev + curr.value, 0)
   );
   return (

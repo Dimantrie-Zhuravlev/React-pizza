@@ -2,27 +2,26 @@ import React, { useState, useEffect } from "react";
 import classes from "classnames";
 import { CaretUpOutlined, CaretDownOutlined } from "@ant-design/icons";
 import { Spin } from "antd";
-import { useSelector, useDispatch } from "react-redux";
 
 import { setConsistFilter } from "../../store/slices/MainFilters";
-import { StateMainFilters } from "../../types/StateRedux";
 import { IMeatFilter } from "../../types/mainFilters";
 import { IMainPizza } from "../../types/pizzas";
 import MainPizza from "../MainPizza";
 import ModalFilter from "../ModalFilter";
 import { fetchPizzas } from "../../services/Pizzas/kek";
+import { useAppSelector, useAppDispatch } from "../../hooks/redux";
 
 import styles from "./FilterPizzas.module.scss";
 
 const FilterPizzas = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [isChangeFilter, setchange] = useState(false);
   const [pizzas, setPizzas] = useState<Array<IMainPizza>>([]);
-  const currentRatingFilter = useSelector(
-    (state: StateMainFilters) => state.FiltersMain.demandFilter
+  const currentRatingFilter = useAppSelector(
+    (state) => state.FiltersMain.demandFilter
   );
-  const currentConsistFilter = useSelector(
-    (state: StateMainFilters) => state.FiltersMain.consistFilter
+  const currentConsistFilter = useAppSelector(
+    (state) => state.FiltersMain.consistFilter
   );
   const typeFilters: IMeatFilter[] = [
     "Все",

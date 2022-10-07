@@ -1,5 +1,3 @@
-import { ReduxMainFilters } from "./mainFilters";
-
 export interface IBasketPizza {
   id: string;
   imageUrl: string;
